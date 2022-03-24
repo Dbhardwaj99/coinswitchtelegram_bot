@@ -59,12 +59,12 @@ def start(update, context):
                 data['ref'][user] = 0
             data['total'] += 1
             data['id'][user] = data['total']
-            data['process'][user] = "verify"
+            data['process'][user] = "1st question"
             json.dump(data,open('users.json','w'))
             msg = config['intro']
             update.message.reply_text(msg)
-            update.message.reply_text('''\n↪️  Step-by-step guide:\n\nAnswer every question correctly to get 10 bitcoins. \n\n**Complete the captcha to get started👇🏻**''')
-            update.message.reply_photo(verification())
+            update.message.reply_text('''\nStep by Step Guide :\n\nThere are 9 questions. \nEvery question has 4 options : A B C D\n\nYou just have to type the option in chat box and press send. \ntype ENTER to Start''')
+            # update.message.reply_photo(verification())
         else:
             welcome_msg = "Already done!"
             reply_markup = ReplyKeyboardMarkup(dash_key,resize_keyboard=True)
@@ -77,142 +77,102 @@ def extra(update, context):
     if update.message.chat.type == 'private':
         user = str(update.message.chat.id)
 
-        if data["process"][user] == 'verify':
-            msg = '''Who is the founder of bitcoin?'''
-            text = update.message.text.lower()
-            if text == '2bg48':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == '2fxgd':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == '5n728':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == 'ec6pm':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == 'm457d':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == 'w4x2m':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            elif text == 'yew6p':
-                reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
-                update.message.reply_text(msg, reply_markup=reply_markup)
-                update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
-                data['process'][user] = '1st question'
-            else:
-                update.message.reply_text("err, try again")
-        elif data["process"][user] == '1st question':
+        if data["process"][user] == '1st question':
             answer = update.message.text
             data["correct_questions"][user] = 0
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "What will be the price bitcoin"
+            msg = "The early internet that only allows people to read from the internet"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: 1 million\n B: 0.5 Billion\n C: 1000k\n D: 20k''')
+            update.message.reply_text('''\na) Web 1.0\nb) Web 2.0\nc) Web 3.0\nd) Web 0.0''')
             data['process'][user] = '2nd question'
             json.dump(data,open('users.json','w'))
         elif data["process"][user] == '2nd question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of solana"
+            msg = "What is a miner?"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\n a) A type of blockchain\n b) An algorithm that predicts the next part of the chain\n c) A person doing calculations to verify a transaction\n d) Computers that validate and process Blockchain transactions''')
             data['process'][user] = '3rd question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '3rd question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of coinmarketcap"
+            msg = "What does P2P stand for?"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) Peer to peer\nb) Password to password\nc) Public key to Private key\nd) Product to product''')
             data['process'][user] = '4th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '4th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of coinswitch"
+            msg = "Why do people buy NFTs"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) NFTs have generated billions of dollars\nb) They gain the rights to the unique token on the blockchain\nc) Due to urging price of Bitcoin and distrust in the US dollar\nd) All of the above''')
             data['process'][user] = '5th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '5th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of cardano"
+            msg = "What can you do with an NFT ??"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) All of ownership records and tokens can be transferred freely\nb) With Non Fungible Tokens one can own a piece of crypto history\nc) You can represent unique digital items\nd) All of the above''')
             data['process'][user] = '6th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '6th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of degenerates"
+            msg = "What is Blockchain ??"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) An exchange\nb) A distributed ledger on a peer to peer network\nc) An algorith\nd) A type of cryptocurrency''')
             data['process'][user] = '7th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '7th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of polkadot"
+            msg = "Where can you buy a Cryptocurrency ??"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) Bitcoin ATM\nb) Private Transaction\nc) an exchange\nd) All of the above''')
             data['process'][user] = '8th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '8th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of discord"
+            msg = "The maximum number of bitcoins that can be created is"
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\n11 million\nb) 25 million\nc) 21 million\nd) 100 million''')
             data['process'][user] = '9th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '9th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = "Who is the founder of tesla"
+            msg = "Which are the real-world applications of blockchain."
             reply_markup = ReplyKeyboardMarkup(option_key, resize_keyboard=True, one_time_keyboard=True)
             update.message.reply_text(msg, reply_markup=reply_markup)
-            update.message.reply_text('''\n A: Someone\n B: No one\n C: Any one\n D: I don't Know''')
+            update.message.reply_text('''\na) Healthcare\nb) Banking\nc) Distributed Cloud storage\nd) All of the above''')
             data['process'][user] = '10th question'
             json.dump(data, open('users.json', 'w'))
         elif data["process"][user] == '10th question':
             answer = update.message.text
             if answer == 'A':
                 data["correct_questions"][user] = data["correct_questions"][user] + 1
-            msg = (f"Great, You have given {data['correct_questions'][user]} of the 10 questions correctly... You'll be getting 10 bitcoins for each correct answers. You can win more by reffering more people")
+            msg = (f"Great, You have given {data['correct_questions'][user]} of the 10 questions correctly...")
             update.message.reply_text(msg)
             update.message.reply_text('''Please enter your Bitcoin wallet address so that we can send you the prize.''')
             data['process'][user] = "bitcoin"

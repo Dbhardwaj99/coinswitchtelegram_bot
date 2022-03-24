@@ -18,29 +18,29 @@ admin_key = [['Users','Get List']]
 webhook_url = 'Your Webook'
 PORT = int(os.environ.get('PORT','8449'))
 
-def verification():
-    random_number = randint(1, 7)
-    if random_number == 1:
-        captcha1 = "https://i.postimg.cc/TwjQ9mfd/2bg48.png"
-        return captcha1
-    elif random_number == 2:
-        captcha2 = "https://i.postimg.cc/wM62bvjh/2fxgd.png"
-        return captcha2
-    elif random_number == 3:
-        captcha3 = "https://i.postimg.cc/hvpsFBXN/5n728.png"
-        return captcha3
-    elif random_number == 4:
-        captcha4 = "https://i.postimg.cc/7PVmJgKX/ec6pm.png"
-        return captcha4
-    elif random_number == 5:
-        captcha5 = "https://i.postimg.cc/Pr5KWPcH/m457d.png"
-        return captcha5
-    elif random_number == 6:
-        captcha6 = "https://i.postimg.cc/hPZspKWd/w4x2m.png"
-        return captcha6
-    elif random_number == 7:
-        captcha7 = "https://i.postimg.cc/52H3rDbk/yew6p.png"
-        return captcha7
+# def verification():
+#     random_number = randint(1, 7)
+#     if random_number == 1:
+#         captcha1 = "https://i.postimg.cc/TwjQ9mfd/2bg48.png"
+#         return captcha1
+#     elif random_number == 2:
+#         captcha2 = "https://i.postimg.cc/wM62bvjh/2fxgd.png"
+#         return captcha2
+#     elif random_number == 3:
+#         captcha3 = "https://i.postimg.cc/hvpsFBXN/5n728.png"
+#         return captcha3
+#     elif random_number == 4:
+#         captcha4 = "https://i.postimg.cc/7PVmJgKX/ec6pm.png"
+#         return captcha4
+#     elif random_number == 5:
+#         captcha5 = "https://i.postimg.cc/Pr5KWPcH/m457d.png"
+#         return captcha5
+#     elif random_number == 6:
+#         captcha6 = "https://i.postimg.cc/hPZspKWd/w4x2m.png"
+#         return captcha6
+#     elif random_number == 7:
+#         captcha7 = "https://i.postimg.cc/52H3rDbk/yew6p.png"
+#         return captcha7
 
 def start(update, context):
     if update.message.chat.type == 'private':
